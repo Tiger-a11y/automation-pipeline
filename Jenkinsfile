@@ -35,31 +35,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        success {
-            emailext(
-                subject: "✅ Build Passed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
-                    <p>Suite: ${params.TEST_SUIT}</p>
-                    <p>Allure Report: <a href="${env.REPORT_LINK}">View</a></p>
-                """,
-                mimeType: 'text/html',
-                to: "${env.EMAIL_RECIPIENT}"
-            )
-        }
-
-        failure {
-            emailext(
-                subject: "❌ Build Failed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
-                    <p>Test Suite: <b>${params.TEST_SUIT}</b></p>
-                    <p>Status: <b>FAILED</b></p>
-                    <p>View Allure Report: <a href="${env.REPORT_LINK}">Click here</a></p>
-                """,
-                mimeType: 'text/html',
-                to: "${env.EMAIL_RECIPIENT}"
-            )
-        }
-    }
 }
