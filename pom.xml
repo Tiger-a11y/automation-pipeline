@@ -27,6 +27,11 @@
               </suiteXmlFiles>
             </configuration>
           </plugin>
+          <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.11.2</version>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -44,6 +49,11 @@
                 <suiteXmlFile>testng-regression.xml</suiteXmlFile>
               </suiteXmlFiles>
             </configuration>
+          </plugin>
+          <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.11.2</version>
           </plugin>
         </plugins>
       </build>
@@ -91,6 +101,14 @@
       <artifactId>extentreports</artifactId>
       <version>5.1.1</version>
     </dependency>
+
+    <!-- ✅ Allure Reports (for beautiful HTML reports) -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>2.24.0</version>
+    </dependency>
+
 
     <!-- ✅ Jackson (for JSON parsing if needed) -->
     <dependency>
