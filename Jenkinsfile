@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url:'https://your-repo.git'
+                git url:'https://github.com/Tiger-a11y/automation-pipeline'
             }
         }
 
