@@ -1,31 +1,24 @@
 package com.example.tests;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.base.BaseTest;
-import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
-@Epic("Smoke Suite")
 public class SmokeTests extends BaseTest {
 
     @Test(groups = {"smoke"})
-    @Feature("Login")
-    @Story("Valid Login")
-    @Severity(SeverityLevel.CRITICAL)
     public void loginTest() {
-        test = extent.createTest("loginTest - Smoke");
-        logToAllure("Launching login test");
+        ExtentTest extentTest = extent.createTest("loginTest - Smoke");
+        test.set(extentTest);
         System.out.println("Executed Smoke: loginTest");
-        test.pass("Login test passed");
+        test.get().pass("Login test passed");
     }
 
     @Test(groups = {"smoke"})
-    @Feature("Dashboard")
-    @Story("Dashboard Visibility")
-    @Severity(SeverityLevel.NORMAL)
     public void dashboardTest() {
-        test = extent.createTest("dashboardTest - Smoke");
-        logToAllure("Opening dashboard");
+        ExtentTest extentTest = extent.createTest("dashboardTest - Smoke");
+        test.set(extentTest);
         System.out.println("Executed Smoke: dashboardTest");
-        test.pass("Dashboard test passed");
+        test.get().pass("Dashboard test passed");
     }
 }
