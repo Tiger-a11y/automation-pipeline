@@ -37,14 +37,6 @@ pipeline {
     }
 
     post {
-          always {
-                steps {
-                    allure([
-                        path: 'target/allure-results'
-                    ])
-                }
-          }
-
         success {
             emailext(
                 subject: "✅ Build Passed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
@@ -61,12 +53,12 @@ pipeline {
             emailext(
                 subject: "❌ Build Failed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
-                <p>Test Suite: <b>${params.TEST_SUIT}</b></p>
-                <p>Status: <b>FAILED</b></p>
-                <p>View Allure Report: <a href="${env.BUILD_URL}allure">Click here</a></p>
+                    <p>Test Suite: <b>${params.TEST_SUIT}</b></p>
+                    <p>Status: <b>FAILED</b></p>
+                    <p>View Allure Report: <a href="${env.REPORT_LINK}">Click here</a></p>
                 """,
                 mimeType: 'text/html',
-                to: 'waghavinash384@gmail.com'
+                to: "${env.EMAIL_RECIPIENT}"
             )
         }
     }
