@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1","logoutTest","Smoke Suite","Wed Jul 09 22:50:02 IST 2025","broken","Wed Jul 09 22:50:02 IST 2025","com.example.tests.CommonTests","Smoke Tests","com.example.tests.CommonTests","logoutTest"
+"","9","dashboardTest","Smoke Suite","Wed Jul 09 22:50:01 IST 2025","passed","Wed Jul 09 22:50:01 IST 2025","com.example.tests.SmokeTests","Smoke Tests","com.example.tests.SmokeTests","dashboardTest"
+"","2","footerLinksTest","Smoke Suite","Wed Jul 09 22:50:02 IST 2025","broken","Wed Jul 09 22:50:02 IST 2025","com.example.tests.CommonTests","Smoke Tests","com.example.tests.CommonTests","footerLinksTest"
+"","4","breadcrumbTest","Smoke Suite","Wed Jul 09 22:50:02 IST 2025","broken","Wed Jul 09 22:50:02 IST 2025","com.example.tests.CommonTests","Smoke Tests","com.example.tests.CommonTests","breadcrumbTest"
+"","0","helpSectionTest","Smoke Suite","Wed Jul 09 22:50:02 IST 2025","broken","Wed Jul 09 22:50:02 IST 2025","com.example.tests.CommonTests","Smoke Tests","com.example.tests.CommonTests","helpSectionTest"
+"","0","loginTest","Smoke Suite","Wed Jul 09 22:50:02 IST 2025","passed","Wed Jul 09 22:50:02 IST 2025","com.example.tests.SmokeTests","Smoke Tests","com.example.tests.SmokeTests","loginTest"
+"","0","settingsPageAccessTest","Smoke Suite","Wed Jul 09 22:50:02 IST 2025","broken","Wed Jul 09 22:50:02 IST 2025","com.example.tests.CommonTests","Smoke Tests","com.example.tests.CommonTests","settingsPageAccessTest"

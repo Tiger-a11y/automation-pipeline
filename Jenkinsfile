@@ -1,18 +1,31 @@
 pipeline {
     agent any
 
+    environment {
+        EMAIL_RECIPIENT = 'waghavinash384@gmail.com'
+        MAVEN_TOOL = 'Maven 3.8.8'
+    }
+
     parameters {
         choice(name: 'TEST_SUIT', choices: ['smoke', 'regression'], description: 'Choose test suit')
     }
 
     tools {
-        maven 'Maven 3.8.8'
+        maven "${env.MAVEN_TOOL}"
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/Tiger-a11y/automation-pipeline', branch: 'main'
+            }
+        }
+
+        stage('Set Env') {
+            steps {
+                script {
+                    env.REPORT_LINK = "${env.BUILD_URL}allure"
+                }
             }
         }
 
@@ -25,8 +38,32 @@ pipeline {
 
     post {
         always {
-            // Publish Allure results
             allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+        }
+
+        success {
+            emailext(
+                subject: "✅ Build Passed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+                    <p>Suite: ${params.TEST_SUIT}</p>
+                    <p>Allure Report: <a href="${env.REPORT_LINK}">View</a></p>
+                """,
+                mimeType: 'text/html',
+                to: "${env.EMAIL_RECIPIENT}"
+            )
+        }
+
+        failure {
+            emailext(
+                subject: "❌ Build Failed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+                <p>Test Suite: <b>${params.TEST_SUIT}</b></p>
+                <p>Status: <b>FAILED</b></p>
+                <p>View Allure Report: <a href="${env.BUILD_URL}allure">Click here</a></p>
+                """,
+                mimeType: 'text/html',
+                to: 'waghavinash384@gmail.com'
+            )
         }
     }
 }

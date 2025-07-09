@@ -1,0 +1,8 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"1","Common Functionality Suite","0","Authentication","0","0","Logout Functionality","0"
+"0","Smoke Suite","0","Dashboard","1","0","Dashboard Visibility","0"
+"1","Common Functionality Suite","0","UI Validation","0","0","Check Footer Links","0"
+"1","Common Functionality Suite","0","Breadcrumbs","0","0","Breadcrumb Navigation","0"
+"1","Common Functionality Suite","0","Help","0","0","Open Help Section","0"
+"0","Smoke Suite","0","Login","1","0","Valid Login","0"
+"1","Common Functionality Suite","0","Navigation","0","0","Access Settings Page","0"
