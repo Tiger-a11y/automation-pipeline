@@ -37,11 +37,13 @@ pipeline {
     }
 
     post {
-        always {
-            allure([
-                results: [[path: 'target/allure-results']]
-            ])
-        }
+          always {
+                steps {
+                    allure([
+                        path: 'target/allure-results'
+                    ])
+                }
+          }
 
         success {
             emailext(
