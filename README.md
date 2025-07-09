@@ -40,6 +40,8 @@ automation-pipeline/
 │       │   └── com.utils/         # Report managers & utilities
 │
 ├── testng.xml                     # TestNG suite config
+├── testng-smoke.xml               # Smoke TestNG  suite config
+├── testng-regression.xml          # Regression TestNG suite config
 ├── pom.xml                        # Maven config
 ├── Jenkinsfile                    # Pipeline script (Declarative)
 └── README.md                      # Project documentation
@@ -51,8 +53,8 @@ automation-pipeline/
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/Tiger-a11y/automation-pipeline
+   cd automation-pipeline
    ```
 
 2. Run tests via Maven:
@@ -77,9 +79,42 @@ automation-pipeline/
 
 **Sample Jenkins Pipeline Stage:**
 ```groovy
-stage('Run Tests') {
-    steps {
-        sh 'mvn clean test -DsuiteXmlFile=testng.xml'
+pipeline {
+    agent any
+
+    environment {
+        EMAIL_RECIPIENT = 'waghavinash384@gmail.com'
+        MAVEN_TOOL = 'Maven 3.8.8'
+    }
+
+    parameters {
+        choice(name: 'TEST_SUIT', choices: ['smoke', 'regression'], description: 'Choose test suit')
+    }
+
+    tools {
+        maven "${env.MAVEN_TOOL}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Tiger-a11y/automation-pipeline', branch: 'main'
+            }
+        }
+
+        stage('Set Env') {
+            steps {
+                script {
+                    env.REPORT_LINK = "${env.BUILD_URL}allure"
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh "mvn clean test -P${params.TEST_SUIT}"
+            }
+        }
     }
 }
 ```
@@ -104,7 +139,7 @@ Pull requests are welcome. Let’s improve this together!
 
 ## 📬 Contact
 
-Have ideas or questions? [Connect on LinkedIn](https://www.linkedin.com/in/your-profile) or [open an issue](https://github.com/your-username/your-repo/issues).
+Have ideas or questions? [Connect on LinkedIn](https://www.linkedin.com/in/avinash-wagh101/) or [open an issue](https://www.linkedin.com/in/avinash-wagh101/issues).
 
 ---
 
