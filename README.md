@@ -83,7 +83,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'waghavinash384@gmail.com'
+        EMAIL_RECIPIENT = 'example@gmail.com'
         MAVEN_TOOL = 'Maven 3.8.8'
     }
 
