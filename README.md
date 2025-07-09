@@ -1,6 +1,6 @@
 # 🚀 Jenkins-Integrated QA Automation Framework
 
-![Automation CI Banner](https://raw.githubusercontent.com/your-username/your-repo/main/assets/ci-pipeline-banner.png)
+![Automation CI Banner](assets/ci-pipeline-banner.png)
 
 ## 📌 Overview
 
